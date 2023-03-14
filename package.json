@@ -1,0 +1,23 @@
+{
+  "name": "tech-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cyril1743/tech-blog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cyril1743/tech-blog/issues"
+  },
+  "homepage": "https://github.com/Cyril1743/tech-blog#readme",
+  "dependencies": {
+    "sequelize": "^6.29.3"
+  }
+}
