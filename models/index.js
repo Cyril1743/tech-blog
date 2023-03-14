@@ -22,14 +22,4 @@ Comments.belongsTo(Post, {
     onDelete: "CASCADE"
 })
 
-User.hasMany(Comments, {
-    through: Post,
-    foreignKey: "id",
-    onDelete: "CASCADE"
-})
-
-Comments.belongsTo(User, {
-    through: Post,
-    foreignKey: "id",
-    onDelete:"CASCADE"
-})
+module.exports = { User, Post, Comments}
