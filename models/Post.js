@@ -16,12 +16,13 @@ Post.init({
             key: "id"
         }
     },
-    content: {
+    title: {
         type: DataTypes.STRING,
         allowNull: false
     },
-    date: {
-        type: DataTypes.DATE
+    content: {
+        type: DataTypes.STRING,
+        allowNull: false
     }
 }, {
     sequelize,

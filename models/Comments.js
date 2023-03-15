@@ -32,7 +32,7 @@ Comments.init({
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'post'
+    modelName: 'comment'
 })
 
 module.exports = Comments

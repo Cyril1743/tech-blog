@@ -1,0 +1,19 @@
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{post.title}}</h5>
+    <p class="card-text">{{post.content}}</p>
+    <a href="/post/{{post.id}}" class="btn btn primary">Comment</a>
+    <div class="card-footer">
+        <p>Created by: {{post.user.userName}} at {{post.createdAt}}</p>
+    </div>
+  </div>
+</div>
+{{#each comments as |comment|}}
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <p class="card-text">{{comment.content}}</p>
+    <div class="card-footer">
+        <p>Created by: {{comment.user.userName}} at {{comment.createdAt}}</p>
+    </div>
+  </div>
+</div>

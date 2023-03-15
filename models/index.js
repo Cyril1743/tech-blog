@@ -22,4 +22,12 @@ Comments.belongsTo(Post, {
     onDelete: "CASCADE"
 })
 
+// User.hasMany(Comments, {
+//     through: "Post"
+// })
+
+// Comments.belongsToMany(User, {
+//     through: "Post"
+// })
+
 module.exports = { User, Post, Comments}

@@ -1,0 +1,14 @@
+ <form id="login-form" class="mx-auto" style="width: 200px;">
+        <div class="mb-3">
+            <label for="inputUsername" class="form-label">Username</label>
+            <input type="text" class="form-control" id="inputUsername" pattern="^[a-zA-Z0-9_]+$" maxlength="20"
+                name="username">
+        </div>
+        <div class="mb-3">
+            <label for="inputPassword1" class="form-label">Password</label>
+            <input type="password" class="form-control" id="inputPassword1" pattern="^[a-zA-Z0-9_]+$" maxlength="20"
+                name="password">
+            <button type="submit" class="btn btn-primary">Login</button>
+            <a style="display: block;" href="/sign-up">Sign up instead</a>
+    </form>
+<script src="/js/login.js"></script>
