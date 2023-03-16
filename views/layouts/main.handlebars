@@ -27,8 +27,13 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/dashboard">Dashboard</a>
                         </li>
+                        {{#if loggedIn}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/user/logout">Logout</a>
+                        {{else}}
                         <li class="nav-item">
                             <a class="nav-link" href="/login">Login</a>
+                        {{/if}}
                         </li>
                     </ul>
                 </div>

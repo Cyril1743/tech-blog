@@ -1,5 +1,6 @@
 const express = require("express")
 const session = require("express-session")
+const SequelizeStore = require("connect-session-sequelize")(session.Store)
 const exphbs = require("express-handlebars")
 const hbs = exphbs.create({})
 const sequelize = require("./config/connection")
@@ -16,6 +17,18 @@ const PORT = process.env.PORT || 3001
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
+app.use(session({
+    secret: 'sdjfaklasdfkljasdfj;k',
+    cookie: {
+        maxAge: 60 * 60 * 1000,
+    },
+    resave: false,
+    saveUninitialized: true,
+
+    store: new SequelizeStore({
+        db: sequelize,
+    }),
+}))
 //Using the routes from the folder
 app.use("/user", user)
 app.use("/post", post)
@@ -47,6 +60,10 @@ app.get("/user", async (req, res) => {
     } catch (error) {
         res.status(400).json(error)
     }
+})
+
+app.get("/login", (req, res) => {
+    res.render("login")
 })
 sequelize.sync().then(
     app.listen(PORT, () => {
