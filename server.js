@@ -16,6 +16,7 @@ const PORT = process.env.PORT || 3001
 //Middleware for express
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(express.static("public"))
 
 app.use(session({
     secret: 'sdjfaklasdfkljasdfj;k',
@@ -47,6 +48,9 @@ app.get("/", async (req, res) => {
     } catch (error) {
         res.status(200).json(error)
     }
+})
+app.get("/sign-up", (req, res) => {
+    res.render("sign-up")
 })
 
 app.get("/user", async (req, res) => {

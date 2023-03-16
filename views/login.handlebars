@@ -1,4 +1,7 @@
  <form id="login-form" class="mx-auto" style="width: 200px;">
+    {{#if message}}
+    <p>{{message}}</p>
+    {{/if}}
         <div class="mb-3">
             <label for="inputUsername" class="form-label">Username</label>
             <input type="text" class="form-control" id="inputUsername" pattern="^[a-zA-Z0-9_]+$" maxlength="20"

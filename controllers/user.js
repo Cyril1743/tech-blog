@@ -2,17 +2,18 @@ const user = require("express").Router()
 const { User } = require("../models/index")
 
 user.post("/", async (req, res) => {
+    var userData = JSON.parse(req.body)
     try {
         const user = await User.findOne({
             where: {
-                userName : req.body.username
+                userName : userData.username
             }
         })
         if (user){
             return res.render("sign-up", {message: "User already exists"})
         }
-        await User.create(req.body)
-        res.status(201).json("Created")
+        await User.create(userData)
+        res.status(201).redirect()
     } catch (error) {
         res.status(400).json(error)
     }
