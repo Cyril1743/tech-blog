@@ -10,7 +10,7 @@ submitBtn.on("click", async (event) => {
         postId : id[2],
         content : content
     }
-    var response = await fetch("/comments", {
+    var response = await fetch(`/comments/${id[2]}`, {
         method: "post",
         body: JSON.stringify(body),
         headers: { 'Content-Type': 'application/json' },

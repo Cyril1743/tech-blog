@@ -1,5 +1,5 @@
 var usernameInput = $("#inputUsername")
-var passwordInput = $("#inputPassword")
+var passwordInput = $("#inputPassword1")
 var submitButton = $("#submit")
 
 submitButton.on("click", async (event) => {
@@ -9,10 +9,10 @@ submitButton.on("click", async (event) => {
     var newUser = {username: username, password: password}
     var response = await fetch("/user", {
         method: "post",
-        body: JSON.stringify(newUser)
+        body: JSON.stringify(newUser),
+        headers: { 'Content-Type': 'application/json' }
     })
     if(response.ok){
         window.location.replace("/login")
     }
-    
 })

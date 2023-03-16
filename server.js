@@ -3,11 +3,16 @@ const session = require("express-session")
 const SequelizeStore = require("connect-session-sequelize")(session.Store)
 const exphbs = require("express-handlebars")
 const hbs = exphbs.create({})
+
+//Requires for sequelize
 const sequelize = require("./config/connection")
 const { Post, User } = require("./models/index")
+
+//Requires for express
 const user = require("./controllers/user")
 const post = require("./controllers/post")
 const comments = require("./controllers/comments")
+const isAuth = require("./util/isAuth")
 
 //Initialize express app
 const app = express()
@@ -68,6 +73,31 @@ app.get("/user", async (req, res) => {
 
 app.get("/login", (req, res) => {
     res.render("login")
+})
+
+app.get("/dashboard", isAuth, async (req, res) => {
+    try {
+        const userData = await User.findOne({
+            where: {
+                userName: req.session.username
+            }
+        })
+        const { id } = userData.get({ plain: true })
+        const postData = await Post.findAll({
+            where: {
+                userCreated: id
+            }
+        })
+        const posts = postData.map(post => post.get({ plain: true }))
+        res.render("dashboard", {
+            username: req.session.username,
+            posts: posts
+        })
+    } catch (error) {
+        res.status(500).json(error)
+    }
+
+
 })
 sequelize.sync().then(
     app.listen(PORT, () => {
