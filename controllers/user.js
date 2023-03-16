@@ -9,13 +9,16 @@ user.post("/", async (req, res) => {
             }
         })
         if (user) {
-            return res.render("sign-up", { message: "User already exists" })
+            return res.render("sign-up")
         }
         await User.create({
             userName: req.body.username,
             password: req.body.password
         })
-        res.status(201).redirect("/login")
+        req.session.save(() => {
+            req.session.username = req.body.username
+            res.redirect("/dashboard")
+        })
     } catch (error) {
         res.status(400).json(error)
     }
@@ -27,7 +30,7 @@ user.post("/login", async (req, res) => {
         }
     })
     if (!user) {
-        return res.render("login", { message: "No such user" })
+        return res.render("login")
     }
     const password = await user.checkPassword(req.body.password)
     if (!password) {
@@ -37,7 +40,6 @@ user.post("/login", async (req, res) => {
     }
     req.session.save(() => {
         req.session.username = req.body.username
-        req.session.loggedIn = true
         res.render("dashboard")
     })
 })

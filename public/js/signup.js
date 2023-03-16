@@ -13,6 +13,6 @@ submitButton.on("click", async (event) => {
         headers: { 'Content-Type': 'application/json' }
     })
     if(response.ok){
-        window.location.replace("/login")
+        window.location.replace("/")
     }
 })
