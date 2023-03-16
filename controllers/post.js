@@ -4,9 +4,20 @@ const isAuth = require("../util/isAuth")
 
 post.post("/", async (req, res) => {
     try {
-        await Post.create(req.body)
+        const userData = await User.findOne({
+            where: {
+                userName: req.session.username
+            }
+        })
+        const user = userData.get({ plain: true })
+        await Post.create({
+            title: req.body.title,
+            content: req.body.content,
+            userId: user.id
+        })
         res.status(201).json("Created")
     } catch (error) {
+        console.log(error)
         res.status(400).json(error)
     }
 

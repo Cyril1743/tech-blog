@@ -1,19 +1,21 @@
 const user = require("express").Router()
-const express = require("express")
 const { User } = require("../models/index")
 
 user.post("/", async (req, res) => {
     try {
         const user = await User.findOne({
             where: {
-                userName : req.body.username
+                userName: req.body.username
             }
         })
-        if (user){
-            return res.render("sign-up", {message: "User already exists"})
+        if (user) {
+            return res.render("sign-up", { message: "User already exists" })
         }
-        await User.create(req.body)
-        res.status(201).redirect()
+        await User.create({
+            userName: req.body.username,
+            password: req.body.password
+        })
+        res.status(201).redirect("/login")
     } catch (error) {
         res.status(400).json(error)
     }
@@ -24,12 +26,12 @@ user.post("/login", async (req, res) => {
             userName: req.body.username
         }
     })
-    if(!user){
-        res.render("login", {message: "No such user"})
+    if (!user) {
+        return res.render("login", { message: "No such user" })
     }
     const password = await user.checkPassword(req.body.password)
-    if (!password){
-        res.render("login", {
+    if (!password) {
+        return res.render("login", {
             message: "Invalid password"
         })
     }

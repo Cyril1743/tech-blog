@@ -6,11 +6,10 @@ comments.post("/:id", async (req, res) => {
     try {
         const userData = await User.findOne({
             where: {
-                userName: username
+                userName: req.session.username
             }
         })
         const user = userData.get({ plain: true })
-
         await Comments.create({
             content: req.body.content,
             postId: req.params.id,

@@ -85,7 +85,7 @@ app.get("/dashboard", isAuth, async (req, res) => {
         const { id } = userData.get({ plain: true })
         const postData = await Post.findAll({
             where: {
-                userCreated: id
+                userId: id
             }
         })
         const posts = postData.map(post => post.get({ plain: true }))

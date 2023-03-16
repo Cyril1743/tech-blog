@@ -2,7 +2,7 @@ var textBox = $("#content")
 var submitBtn = $("#submit")
 
 submitBtn.on("click", async (event) => {
-    event.PreventDefault()
+    event.preventDefault()
     var content = textBox.val()
     var url = window.location.pathname
     var id = url.split("/")

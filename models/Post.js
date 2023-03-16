@@ -9,7 +9,7 @@ Post.init({
         autoIncrement: true,
         primaryKey: true
     },
-    userCreated: {
+    userId: {
         type: DataTypes.INTEGER,
         references: {
             model: "user",
