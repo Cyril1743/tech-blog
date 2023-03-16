@@ -49,7 +49,10 @@ app.get("/", async (req, res) => {
             include: { model: User }
         })
         const posts = postData.map(post => post.get({ plain: true }))
-        res.render("all", { posts })
+        res.render("all", {
+            posts: posts,
+            username: req.session.username
+        })
     } catch (error) {
         res.status(200).json(error)
     }
