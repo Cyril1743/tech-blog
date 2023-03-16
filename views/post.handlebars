@@ -1,15 +1,15 @@
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 100%;">
   <div class="card-body">
     <h5 class="card-title">{{post.title}}</h5>
     <p class="card-text">{{post.content}}</p>
-    <a href="/post/{{post.id}}" class="btn btn primary">Comment</a>
     <div class="card-footer">
         <p>Created by: {{post.user.userName}} at {{post.createdAt}}</p>
     </div>
   </div>
 </div>
+<P>Comments:</P>
 {{#each comments as |comment|}}
-<div class="card" style="width: 18rem;">
+<div class="card" style="width: 100%;">
   <div class="card-body">
     <p class="card-text">{{comment.content}}</p>
     <div class="card-footer">
@@ -17,3 +17,16 @@
     </div>
   </div>
 </div>
+{{/each}}
+<form style="width: 100%;">
+  <div style="width: 100%;">
+    <label for="content" class="form-label">Write your comment</label>
+    <textarea id="content" maxlength="255"></textarea>
+  </div>
+  <button type="submit" id="submit">Submit</button>
+</form>
+<script
+  src="https://code.jquery.com/jquery-3.6.4.min.js"
+  integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+  crossorigin="anonymous"></script>
+<script src="/js/comment.js"></script>

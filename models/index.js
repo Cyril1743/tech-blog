@@ -22,10 +22,11 @@ Comments.belongsTo(Post, {
     onDelete: "CASCADE"
 })
 
-// User.hasMany(Comments, {
-//     through: "Post"
-// })
+User.hasMany(Comments, {
+})
 
+Comments.belongsTo(User, {
+})
 // Comments.belongsToMany(User, {
 //     through: "Post"
 // })

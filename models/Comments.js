@@ -14,25 +14,25 @@ Comments.init({
         allowNull: false,
     }, postId: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         references: {
             model: 'post',
             key: "id"
         }
     }, userId: {
         type: DataTypes.INTEGER,
+        allowNull: false,
         references: {
             model: "user",
             key: "id"
         }
-    },
-    date: {
-        type: DataTypes.INTEGER
     }
 }, {
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'comment'
+    modelName: 'comment',
+    timestamps: true
 })
 
 module.exports = Comments

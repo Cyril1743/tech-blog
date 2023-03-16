@@ -1,6 +1,16 @@
 const post = require("express").Router()
 const { Post, User, Comments } = require("../models/index")
 
+post.post("/", async (req, res) => {
+    try {
+        await Post.create(req.body)
+        res.status(201).json("Created")
+    } catch (error) {
+        res.status(400).json(error)
+    }
+
+})
+
 post.get("/:id", async (req,res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
@@ -19,3 +29,5 @@ post.get("/:id", async (req,res) => {
         res.status(400).json(error)
     }
 })
+
+module.exports = post
