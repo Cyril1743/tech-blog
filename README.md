@@ -37,3 +37,5 @@
   16daivd.love@gmail.com
   ## Link to deployed application
   [Link to the deployed application](https://safe-journey-37728.herokuapp.com/)
+  ## Screenshot
+  ![Screenshot](./public/imgs/screenshot.png)
