@@ -61,19 +61,6 @@ app.get("/sign-up", (req, res) => {
     res.render("sign-up")
 })
 
-app.get("/user", async (req, res) => {
-    try {
-        const users = await User.findAll()
-        if (!users) {
-            return res.status(404).json("No users")
-        }
-        const user = users.map(user => user.get({ plain: true }))
-        res.status(200).json(user)
-    } catch (error) {
-        res.status(400).json(error)
-    }
-})
-
 app.get("/login", (req, res) => {
     res.render("login")
 })

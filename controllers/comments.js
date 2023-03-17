@@ -1,7 +1,8 @@
 const comments = require("express").Router()
 const { User, Post, Comments } = require("../models/index")
+const isAuth = require("../util/isAuth")
 
-comments.post("/:id", async (req, res) => {
+comments.post("/:id", isAuth , async (req, res) => {
 
     try {
         const userData = await User.findOne({
