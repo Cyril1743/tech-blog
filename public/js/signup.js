@@ -6,13 +6,13 @@ submitButton.on("click", async (event) => {
     event.preventDefault()
     var username = usernameInput.val()
     var password = passwordInput.val()
-    var newUser = {username: username, password: password}
+    var newUser = { username: username, password: password }
     var response = await fetch("/user", {
         method: "post",
         body: JSON.stringify(newUser),
         headers: { 'Content-Type': 'application/json' }
     })
-    if(response.ok){
+    if (response.ok) {
         window.location.replace("/")
     }
 })

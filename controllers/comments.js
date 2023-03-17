@@ -2,7 +2,7 @@ const comments = require("express").Router()
 const { User, Post, Comments } = require("../models/index")
 
 comments.post("/:id", async (req, res) => {
-    
+
     try {
         const userData = await User.findOne({
             where: {

@@ -12,7 +12,7 @@ submitButton.on("click", async (event) => {
         body: JSON.stringify(user),
         headers: { 'Content-Type': 'application/json' }
     })
-    if( response.ok){
+    if (response.ok) {
         window.location.assign("/dashboard")
     }
 })

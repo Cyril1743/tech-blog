@@ -4,24 +4,24 @@
   <div class="card-body">
     <h5 class="card-title">{{post.title}}</h5>
     <p class="card-text">{{post.content}}</p>
+    <button data-id="{{post.id}}" class="btn btn-danger delete" type="button">Delete</button>
+    <a href="/post/update/{{post.id}}" class="btn btn-success">Update</a>
   </div>
 </div>
 {{else}}
 <p>No posts</p>
 {{/each}}
 <form class="mx-auto">
-    <div class="mb-auto">
-        <label for="title" class="form-label">Title:</label>
-        <input type="text" maxlength="30" id="title" class="form-control">
-    </div>
-    <div class="mb-auto">
-        <label for="content" class="form-label">Content:</label>
-        <textarea id="content" class="form-control" cols="100", rows="4" maxlength="255"></textarea>
-    </div>
-    <button id="submit" class="btn btn-primary">Post</button>
+  <div class="mb-auto">
+    <label for="title" class="form-label">Title:</label>
+    <input type="text" maxlength="30" id="title" class="form-control">
+  </div>
+  <div class="mb-auto">
+    <label for="content" class="form-label">Content:</label>
+    <textarea id="content" class="form-control" cols="100" , rows="4" maxlength="255"></textarea>
+  </div>
+  <button id="submit" class="btn btn-primary">Post</button>
 </form>
-<script
-  src="https://code.jquery.com/jquery-3.6.4.min.js"
-  integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
-  crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"
+  integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
 <script src="/js/dashboard.js"></script>
