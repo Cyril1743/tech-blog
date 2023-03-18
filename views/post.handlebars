@@ -12,6 +12,8 @@
 <div class="card" style="width: 100%;">
   <div class="card-body">
     <p class="card-text">{{comment.content}}</p>
+    <a href="/comments/{{comment.id}}" class="btn btn-success">Update</a>
+    <button data-id="{{comment.id}}" class="btn btn-danger delete" type="button">Delete</button>
     <div class="card-footer">
       <p>Created by: {{comment.user.userName}} at {{comment.createdAt}}</p>
     </div>

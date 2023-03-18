@@ -1,5 +1,6 @@
 var textBox = $("#content")
 var submitBtn = $("#submit")
+var deleteBtn = $(".delete")
 
 submitBtn.on("click", async (event) => {
     event.preventDefault()
@@ -19,5 +20,15 @@ submitBtn.on("click", async (event) => {
         window.location.replace(`/post/${id[2]}`)
     } else {
         alert("Failed to add comment")
+    }
+})
+
+deleteBtn.on("click", async (event) => {
+    var id = event.target.getAttribute("data-id")
+    var response = await fetch(`/comments/${id}`, {
+        method: "Delete"
+    })
+    if (response.ok){
+        window.location.reload(true)
     }
 })

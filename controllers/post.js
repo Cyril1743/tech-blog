@@ -14,7 +14,7 @@ post.get("/:id", async (req, res) => {
             include: { model: User }
         })
         const comments = commentData.map(comment => comment.get({ plain: true }))
-        res.render("post", { post: post, comments: comments })
+        res.render("post", { post: post, comments: comments, username: req.session.username })
     } catch (error) {
         res.status(400).json(error)
     }
@@ -28,7 +28,7 @@ post.get("/update/:id", async (req, res) => {
             }
         })
         const post = postData.get({ plain: true })
-        res.render("update", { post })
+        res.render("updatePost", { post })
     } catch (error) {
         res.status(500).json(error)
     }
